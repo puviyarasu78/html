@@ -1,336 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tetris Game</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #1a1a1a;
-            font-family: Arial, sans-serif;
-            color: #fff;
-        }
-        #gameContainer {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            background-color: #2c2c2c;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        }
-        #gameCanvas {
-            border: 2px solid #fff;
-            background-color: #000;
-        }
-        #scoreBoard {
-            margin-top: 20px;
-            font-size: 24px;
-            font-weight: bold;
-        }
-        #startButton {
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 18px;
-            cursor: pointer;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-        #startButton:hover {
-            background-color: #45a049;
-        }
-        #gameOverMessage {
-            display: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-size: 48px;
-            color: red;
-            text-shadow: 2px 2px 4px #000;
-            background-color: rgba(0, 0, 0, 0.7);
-            padding: 20px;
-            border-radius: 10px;
-        }
-        #instructions {
-            margin-top: 20px;
-            font-size: 16px;
-            text-align: center;
-            max-width: 400px;
-        }
-        .control-info {
-            margin: 5px 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Naruto vs Sasuke Animation</title>
+  <link href="https://fonts.googleapis.com/css?family=Passion+One" rel="stylesheet">
+  <style>
+    body {
+      background: #ebebeb;
+      overflow: hidden;
+      margin: 0;
+      font-family: 'Passion One', impact;
+    }
+
+    .bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: url("https://3.bp.blogspot.com/_ImecizcBRRU/TS6TU8NQ95I/AAAAAAAABdE/FRG5NyHoGR4/s1600/naruto_016-017.png");
+      background-size: 2000px auto;
+      animation: fade 6s steps(30) forwards;
+    }
+
+    .retrigger {
+      position: absolute;
+      left: -5em;
+      opacity: 0;
+    }
+
+    .buttons {
+      position: absolute;
+      z-index: 3;
+      top: 1em;
+      left: 50%;
+      width: 10em;
+      margin-left: -5em;
+      height: 2em;
+      line-height: 2em;
+      text-align: center;
+      cursor: pointer;
+      user-select: none;
+      animation: button 8s linear;
+    }
+
+    .buttons .button {
+      padding: 0.3em 1em;
+      color: black;
+      font-size: 1.3em;
+      display: none;
+      cursor: pointer;
+      border: 2px solid black;
+    }
+
+    .buttons .button:hover {
+      color: white;
+      background: black;
+    }
+
+    #retrigger--2:checked ~ .buttons .button--1 {
+      display: block;
+    }
+
+    #retrigger--1:checked ~ .buttons .button--2 {
+      display: block;
+    }
+
+    @keyframes buttons--1 {
+      0%, 99% {
+        visibility: hidden;
+      }
+      100% {
+        visibility: visible;
+      }
+    }
+
+    @keyframes buttons--2 {
+      0%, 99% {
+        visibility: hidden;
+      }
+      100% {
+        visibility: visible;
+      }
+    }
+
+    #retrigger--1:checked ~ .bg {
+      animation-name: fade--1;
+    }
+
+    #retrigger--2:checked ~ .bg {
+      animation-name: fade--2;
+    }
+
+    @keyframes fade--1, fade--2 {
+      0% {
+        background-position: 0 0;
+        opacity: 1;
+      }
+      50% {
+        background-position: 4000% 4000%;
+        opacity: 0.6;
+      }
+      100% {
+        background-position: -4000% -4000%;
+        opacity: 0;
+      }
+    }
+
+    .pane {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scaleY(1.3);
+      perspective: 700px;
+    }
+
+    .rotate {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate3d(1, -1, 0, 40deg) scale(2);
+      transform-style: preserve-3d;
+      animation: rotate 6s 2s forwards;
+    }
+
+    #retrigger--1:checked ~ .pane .rotate {
+      animation-name: rotate--1;
+    }
+
+    #retrigger--2:checked ~ .pane .rotate {
+      animation-name: rotate--2;
+    }
+
+    @keyframes rotate--1, rotate--2 {
+      0% {
+        transform: translate(-50%, -50%) rotate3d(1, -1, 0, 40deg) scale(2);
+      }
+      50% {
+        transform: translate(-50%, -50%) rotate3d(0, 0, 0, 0deg) scale(1.1);
+      }
+      100% {
+        transform: translate(-50%, -50%) rotate3d(0, 0, 0, 0deg) scale(1);
+      }
+    }
+
+    .logo {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform-style: preserve-3d;
+      transform: translate(-50%, -50%);
+      font-size: 9em;
+      letter-spacing: -0.06em;
+      animation: hide 8s linear forwards;
+      padding: 0 0.2em;
+      line-height: 1;
+      border: 0.02em solid black;
+    }
+
+    .logo:nth-child(1) {
+      animation: change 8s steps(30) forwards;
+      background: url("http://images5.fanpop.com/image/photos/28800000/Manga-naruto-shippuuden-28820722-1299-938.jpg");
+      background-size: 2000px auto;
+      -webkit-background-clip: text;
+      color: transparent;
+      filter: drop-shadow(0 -1px 0 black) drop-shadow(0 1px 0 black) drop-shadow(1px 0 0 black) drop-shadow(-1px 0 0 black);
+    }
+
+    @keyframes hide--1, hide--2 {
+      0% {
+        visibility: visible;
+        opacity: 1;
+      }
+      100% {
+        visibility: hidden;
+        opacity: 0;
+      }
+    }
+
+    @keyframes change--1, change--2 {
+      0% {
+        background-position: 0 0;
+        color: rgba(150, 150, 0, 0.4);
+        filter: drop-shadow(0 -1px 0 black) drop-shadow(0 1px 0 black) drop-shadow(1px 0 0 black) drop-shadow(-1px 0 0 black);
+        border-color: black;
+      }
+      50% {
+        background-position: 200% 200%;
+        border-color: white;
+      }
+      100% {
+        background-position: -200% -200%;
+        color: white;
+        filter: drop-shadow(0 0 0 white);
+        border-color: white;
+      }
+    }
+
+    .logo:nth-child(n+2):nth-child(-n+20) {
+      transform: translate3d(-50%, -50%, calc(-1px * var(--i)));
+    }
+  </style>
 </head>
 <body>
-    <div id="gameContainer">
-        <canvas id="gameCanvas" width="300" height="600"></canvas>
-        <div id="scoreBoard">Score: <span id="score">0</span></div>
-        <button id="startButton">Start/Pause</button>
-        <div id="gameOverMessage">Game Over!</div>
-        <div id="instructions">
-            <p class="control-info">Use Arrow Keys to move the piece:</p>
-            <p class="control-info">Left Arrow: Move Left</p>
-            <p class="control-info">Right Arrow: Move Right</p>
-            <p class="control-info">Down Arrow: Move Down</p>
-            <p class="control-info">Spacebar: Rotate</p>
-        </div>
+
+  <input type="radio" name="rerun" id="retrigger--1" class="retrigger">
+  <input type="radio" name="rerun" id="retrigger--2" class="retrigger" checked>
+
+  <div class="bg"></div>
+
+  <div class="pane">
+    <div class="rotate">
+      <div class="logo" style="--i: 1">NARUTO</div>
+      <div class="logo" style="--i: 2">NARUTO</div>
+      <div class="logo" style="--i: 3">NARUTO</div>
+      <div class="logo" style="--i: 4">NARUTO</div>
+      <div class="logo" style="--i: 5">NARUTO</div>
+      <div class="logo" style="--i: 6">NARUTO</div>
+      <div class="logo" style="--i: 7">NARUTO</div>
+      <div class="logo" style="--i: 8">NARUTO</div>
+      <div class="logo" style="--i: 9">NARUTO</div>
+      <div class="logo" style="--i: 10">NARUTO</div>
     </div>
-    <script>
-        const canvas = document.getElementById('gameCanvas');
-        const ctx = canvas.getContext('2d');
-        const startButton = document.getElementById('startButton');
-        const scoreElement = document.getElementById('score');
-        const gameOverMessage = document.getElementById('gameOverMessage');
+  </div>
 
-        const GRID_SIZE = 30;
-        const COLS = canvas.width / GRID_SIZE;
-        const ROWS = canvas.height / GRID_SIZE;
-        const COLORS = [
-            null,
-            '#FF0D72',
-            '#0DC2FF',
-            '#0DFF72',
-            '#F538FF',
-            '#FF8E0D',
-            '#FFE138',
-            '#3877FF',
-        ];
+  <div class="buttons">
+    <label for="retrigger--1" class="button button--1">Replay</label>
+    <label for="retrigger--2" class="button button--2">Replay</label>
+  </div>
 
-        let board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-        let score = 0;
-        let gameOver = false;
-        let gameRunning = false;
-        let currentPiece = null;
-        let dropCounter = 0;
-        let dropInterval = 1000; // ms
-        let lastTime = 0;
-
-        const PIECES = [
-            [[1, 1, 1, 1]], // I
-            [[1, 1], [1, 1]], // O
-            [[0, 1, 0], [1, 1, 1]], // T
-            [[1, 1, 0], [0, 1, 1]], // S
-            [[0, 1, 1], [1, 1, 0]], // Z
-            [[1, 0, 0], [1, 1, 1]], // J
-            [[0, 0, 1], [1, 1, 1]], // L
-        ];
-
-        class Tetromino {
-            constructor(shape, color) {
-                this.shape = shape;
-                this.color = color;
-                this.x = Math.floor(COLS / 2) - Math.floor(shape[0].length / 2);
-                this.y = 0;
-            }
-
-            draw() {
-                ctx.fillStyle = this.color;
-                for (let row = 0; row < this.shape.length; row++) {
-                    for (let col = 0; col < this.shape[row].length; col++) {
-                        if (this.shape[row][col]) {
-                            ctx.fillRect(
-                                (this.x + col) * GRID_SIZE,
-                                (this.y + row) * GRID_SIZE,
-                                GRID_SIZE - 1,
-                                GRID_SIZE - 1
-                            );
-                        }
-                    }
-                }
-            }
-
-            move(dx, dy) {
-                this.x += dx;
-                this.y += dy;
-                if (this.collides()) {
-                    this.x -= dx;
-                    this.y -= dy;
-                    return false;
-                }
-                return true;
-            }
-
-            rotate() {
-                const rotated = Array.from(
-                    { length: this.shape[0].length },
-                    () => Array(this.shape.length).fill(0)
-                );
-                for (let row = 0; row < this.shape.length; row++) {
-                    for (let col = 0; col < this.shape[row].length; col++) {
-                        rotated[col][this.shape.length - 1 - row] = this.shape[row][col];
-                    }
-                }
-                const oldShape = this.shape;
-                this.shape = rotated;
-                if (this.collides()) {
-                    this.shape = oldShape;
-                    return false;
-                }
-                return true;
-            }
-
-            collides() {
-                for (let row = 0; row < this.shape.length; row++) {
-                    for (let col = 0; col < this.shape[row].length; col++) {
-                        if (this.shape[row][col]) {
-                            const boardX = this.x + col;
-                            const boardY = this.y + row;
-                            if (
-                                boardX < 0 ||
-                                boardX >= COLS ||
-                                boardY >= ROWS ||
-                                (boardY >= 0 && board[boardY][boardX])
-                            ) {
-                                return true;
-                            }
-                        }
-                    }
-                }
-                return false;
-            }
-        }
-
-        function createPiece() {
-            const index = Math.floor(Math.random() * PIECES.length);
-            return new Tetromino(PIECES[index], COLORS[index + 1]);
-        }
-
-        function drawBoard() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let row = 0; row < ROWS; row++) {
-                for (let col = 0; col < COLS; col++) {
-                    if (board[row][col]) {
-                        ctx.fillStyle = COLORS[board[row][col]];
-                        ctx.fillRect(
-                            col * GRID_SIZE,
-                            row * GRID_SIZE,
-                            GRID_SIZE - 1,
-                            GRID_SIZE - 1
-                        );
-                    }
-                }
-            }
-        }
-
-        function mergePiece() {
-            for (let row = 0; row < currentPiece.shape.length; row++) {
-                for (let col = 0; col < currentPiece.shape[row].length; col++) {
-                    if (currentPiece.shape[row][col]) {
-                        const boardX = currentPiece.x + col;
-                        const boardY = currentPiece.y + row;
-                        if (boardY < 0) {
-                            gameOver = true;
-                            return;
-                        }
-                        board[boardY][boardX] = PIECES.indexOf(currentPiece.shape) + 1;
-                    }
-                }
-            }
-        }
-
-        function clearLines() {
-            let linesCleared = 0;
-            for (let row = ROWS - 1; row >= 0; row--) {
-                if (board[row].every(cell => cell !== 0)) {
-                    board.splice(row, 1);
-                    board.unshift(Array(COLS).fill(0));
-                    linesCleared++;
-                    row++;
-                }
-            }
-            if (linesCleared > 0) {
-                score += linesCleared * 100;
-                scoreElement.textContent = score;
-            }
-        }
-
-        function update(time = 0) {
-            if (!gameRunning || gameOver) return;
-
-            const deltaTime = time - lastTime;
-            lastTime = time;
-            dropCounter += deltaTime;
-
-            if (dropCounter > dropInterval) {
-                if (!currentPiece.move(0, 1)) {
-                    mergePiece();
-                    clearLines();
-                    currentPiece = createPiece();
-                    if (currentPiece.collides()) {
-                        gameOver = true;
-                        gameOverMessage.style.display = 'block';
-                        startButton.textContent = 'Start';
-                        gameRunning = false;
-                    }
-                }
-                dropCounter = 0;
-            }
-
-            drawBoard();
-            currentPiece.draw();
-            requestAnimationFrame(update);
-        }
-
-        function resetGame() {
-            board = Array.from({ length: ROWS }, () => Array(COLS).fill(0));
-            score = 0;
-            scoreElement.textContent = score;
-            gameOver = false;
-            gameOverMessage.style.display = 'none';
-            currentPiece = createPiece();
-            dropCounter = 0;
-            lastTime = 0;
-        }
-
-        document.addEventListener('keydown', (event) => {
-            if (!gameRunning || gameOver) return;
-
-            switch (event.key) {
-                case 'ArrowLeft':
-                    currentPiece.move(-1, 0);
-                    break;
-                case 'ArrowRight':
-                    currentPiece.move(1, 0);
-                    break;
-                case 'ArrowDown':
-                    currentPiece.move(0, 1);
-                    break;
-                case 'Space':
-                    currentPiece.rotate();
-                    break;
-            }
-            drawBoard();
-            currentPiece.draw();
-        });
-
-        startButton.addEventListener('click', () => {
-            if (!gameRunning) {
-                if (gameOver) resetGame();
-                gameRunning = true;
-                startButton.textContent = 'Pause';
-                lastTime = performance.now();
-                update();
-            } else {
-                gameRunning = false;
-                startButton.textContent = 'Start';
-            }
-        });
-
-        // Initialize the game
-        currentPiece = createPiece();
-        drawBoard();
-        currentPiece.draw();
-    </script>
 </body>
 </html>
