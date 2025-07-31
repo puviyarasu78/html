@@ -1,92 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anime Hub</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-            margin: 0;
-            padding: 0;
-            color: #333;
-        }
-        header {
-            background: linear-gradient(to right, #ff6b6b, #4ecdc4);
-            color: white;
-            text-align: center;
-            padding: 2em;
-        }
-        h1 {
-            margin: 0;
-            font-size: 2.5em;
-        }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        .character-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .character-card {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-            transition: transform 0.3s;
-        }
-        .character-card:hover {
-            transform: scale(1.05);
-        }
-        .character-card h3 {
-            margin: 0 0 10px;
-            color: #ff6b6b;
-            font-size: 1.5em;
-        }
-        .character-card p {
-            font-size: 0.9em;
-            margin: 0;
-        }
-        footer {
-            text-align: center;
-            padding: 1em;
-            background: #333;
-            color: white;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Anime Quotes</title>
+  <style>
+    :root {
+      --bg: #0d1117;
+      --card: #161b22;
+      --text: #c9d1d9;
+      --muted: #8b949e;
+      --accent: #58a6ff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.6;
+      padding: 2rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    header h1 {
+      color: var(--accent);
+      font-size: 2.5rem;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .quote-card {
+      background: var(--card);
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .quote-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .quote {
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .character {
+      color: var(--accent);
+      text-align: right;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <h1>Anime Hub</h1>
-        <p>Your source for all things anime!</p>
-    </header>
-    <div class="container">
-        <h2>Featured Characters</h2>
-        <div class="character-grid">
-            <div class="character-card">
-                <h3>Naruto Uzumaki</h3>
-                <p>The spirited ninja from Konoha, dreaming to become Hokage. Known for his determination and the Nine-Tails chakra.</p>
-            </div>
-            <div class="character-card">
-                <h3>Dragon Ball</h3>
-                <p>Guardian of love and justice, fighting evil by moonlight. Leads the Sailor Scouts with her cosmic powers.</p>
-            </div>
-            <div class="character-card">
-                <h3>Goku</h3>
-                <p>The Saiyan warrior with an unyielding spirit for battle. Protector of Earth with incredible strength.</p>
-            </div>
-        </div>
+  <header>
+    <h1>Anime Quotes Archive</h1>
+    <p class="muted">500 lines of wisdom, emotion, and power</p>
+  </header>
+
+  <main>
+    <div class="quote-grid">
+      <div class="quote-card">
+        <div class="quote">"Power comes in response to a need, not a desire."</div>
+        <div class="character">— Goku, Dragon Ball Z</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"A lesson you must learn, my dear: sometimes you must hurt in order to know."</div>
+        <div class="character">— Jiraiya, Naruto</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"Fear is not evil. It tells you what your weakness is."</div>
+        <div class="character">— Gildarts, Fairy Tail</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"If you don't like your destiny, don't accept it. Instead, have the courage to change it."</div>
+        <div class="character">— Naruto Uzumaki, Naruto</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"The world isn't perfect. But it's there for us, doing the best it can."</div>
+        <div class="character">— Roy Mustang, Fullmetal Alchemist</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"No matter how deep the night, it always turns to day, eventually."</div>
+        <div class="character">— Brook, One Piece</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"You can't win a game by doing nothing. And if you try, you'll lose."</div>
+        <div class="character">— Hikaru Shindo, Hikaru no Go</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"To know sorrow is not terrifying. What is terrifying is to know you can't go back to happiness."</div>
+        <div class="character">— Matsumoto Rangiku, Bleach</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"People's lives don't end when they die. It ends when they lose faith."</div>
+        <div class="character">— Itachi Uchiha, Naruto</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"When you give up, that's when the game is over."</div>
+        <div class="character">— Anri Sonohara, Durarara!!</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"The only ones who should kill are those who are prepared to be killed."</div>
+        <div class="character">— Lelouch Lamperouge, Code Geass</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"Sometimes, the questions are complicated, and the answers are simple."</div>
+        <div class="character">— L, Death Note</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"If you don't take risks, you can't create a future."</div>
+        <div class="character">— Monkey D. Luffy, One Piece</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"You can’t always hold on to the things that are important. Sometimes you have to let go."</div>
+        <div class="character">— Nana Komatsu, Nana</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"Hard work is worthless for those that don’t believe in themselves."</div>
+        <div class="character">— Naruto Uzumaki, Naruto</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"The moment you think of giving up, think of the reason why you held on so long."</div>
+        <div class="character">— Natsu Dragneel, Fairy Tail</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"Life is not a game of luck. If you wanna win, work hard."</div>
+        <div class="character">— Sora, No Game No Life</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"The only thing we're allowed to do is believe. We can't change anything."</div>
+        <div class="character">— Eren Yeager, Attack on Titan</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"There’s no shame in falling down; the true shame is in not getting back up."</div>
+        <div class="character">— Shanks, One Piece</div>
+      </div>
+      <div class="quote-card">
+        <div class="quote">"If you don’t share someone’s pain, you can never understand them."</div>
+        <div class="character">— Nagato, Naruto</div>
+      </div>
     </div>
-    <footer>
-        <p>&copy; 2025 Anime Hub. All rights reserved.</p>
-    </footer>
+  </main>
 </body>
 </html>
