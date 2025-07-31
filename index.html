@@ -1,58 +1,153 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Simple HTML Page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Modern HTML Page</title>
   <style>
-    body {
-      background-color: #121212;
-      color: #ffffff;
-      font-family: Arial, sans-serif;
+    :root {
+      --bg-dark: #0d1117;
+      --bg-card: #161b22;
+      --text-light: #c9d1d9;
+      --text-muted: #8b949e;
+      --accent: #58a6ff;
+      --accent-hover: #1f6feb;
+      --border-radius: 12px;
+    }
+
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
-    header, footer {
-      background-color: #1f1f1f;
-      padding: 20px;
+
+    body {
+      background-color: var(--bg-dark);
+      color: var(--text-light);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      line-height: 1.8;
+    }
+
+    header {
+      background-color: var(--bg-card);
       text-align: center;
+      padding: 2rem 1rem;
+      border-bottom: 1px solid #30363d;
     }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--accent);
+      letter-spacing: 1px;
+      animation: fadeIn 1s ease-in-out;
+    }
+
     main {
-      padding: 20px;
+      max-width: 960px;
+      margin: 2rem auto;
+      padding: 0 1.5rem;
+      display: grid;
+      gap: 2rem;
     }
-    h1 {
-      color: #00bcd4;
+
+    section {
+      background-color: var(--bg-card);
+      padding: 1.5rem 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
     }
+
+    section:hover {
+      transform: translateY(-4px);
+    }
+
+    h2 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+      font-size: 1.5rem;
+    }
+
+    ul {
+      padding-left: 1.2rem;
+      margin-top: 0.5rem;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
     a {
-      color: #90caf9;
+      color: var(--accent);
       text-decoration: none;
+      transition: color 0.3s ease;
     }
+
     a:hover {
-      text-decoration: underline;
+      color: var(--accent-hover);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem;
+      background-color: var(--bg-card);
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      border-top: 1px solid #30363d;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(-10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      main {
+        padding: 0 1rem;
+      }
     }
   </style>
 </head>
 <body>
 
   <header>
-    <h1>Welcome to My Simple Page</h1>
+    <h1>Welcome to My Modern Page</h1>
   </header>
 
   <main>
-    <h2>About This Page</h2>
-    <p>This is a basic HTML page without any images. It's useful for testing or building simple layouts.</p>
-    
-    <h3>Features:</h3>
-    <ul>
-      <li>Dark theme</li>
-      <li>No external images</li>
-      <li>Clean layout</li>
-    </ul>
+    <section>
+      <h2>About</h2>
+      <p>This minimalist web page is built using only HTML and CSS. No images, no external libraries—just clean, efficient code for modern browsers.</p>
+    </section>
 
-    <p>Visit <a href="https://example.com">this link</a> to learn more.</p>
+    <section>
+      <h2>Features</h2>
+      <ul>
+        <li>Responsive design for all devices</li>
+        <li>Dark theme for comfort and aesthetics</li>
+        <li>Hover animations for interactivity</li>
+        <li>Card-based layout for readability</li>
+        <li>No dependencies or images</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Learn More</h2>
+      <p>Want to explore more? Visit <a href="https://example.com" target="_blank">example.com</a> for tutorials and projects.</p>
+    </section>
   </main>
 
   <footer>
-    &copy; 2025 Your Name
+    &copy; 2025 Your Name. Crafted with pure HTML & CSS.
   </footer>
 
 </body>
