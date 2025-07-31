@@ -1,179 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Animated </title>
-  <style>
-    :root {
-      --bg-dark: #0d1117;
-      --bg-card: #161b22;
-      --text-light: #c9d1d9;
-      --text-muted: #8b949e;
-      --accent: #58a6ff;
-      --accent-hover: #1f6feb;
-      --border-radius: 12px;
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      background-color: var(--bg-dark);
-      color: var(--text-light);
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.8;
-      overflow-x: hidden;
-    }
-
-    header {
-      background-color: var(--bg-card);
-      text-align: center;
-      padding: 2rem 1rem;
-      border-bottom: 1px solid #30363d;
-    }
-
-    header h1 {
-      font-size: 2.5rem;
-      background: linear-gradient(90deg, #58a6ff, #1f6feb, #58a6ff);
-      background-size: 300% auto;
-      color: transparent;
-      background-clip: text;
-      -webkit-background-clip: text;
-      animation: gradientMove 4s ease-in-out infinite;
-    }
-
-    @keyframes gradientMove {
-      0% { background-position: 0% }
-      50% { background-position: 100% }
-      100% { background-position: 0% }
-    }
-
-    main {
-      max-width: 960px;
-      margin: 2rem auto;
-      padding: 0 1.5rem;
-      display: grid;
-      gap: 2rem;
-    }
-
-    section {
-      background-color: var(--bg-card);
-      padding: 1.5rem 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      opacity: 0;
-      transform: translateY(20px);
-      animation: fadeUp 0.8s forwards;
-    }
-
-    section:nth-child(2) { animation-delay: 0.3s; }
-    section:nth-child(3) { animation-delay: 0.6s; }
-
-    @keyframes fadeUp {
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    h2 {
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-      font-size: 1.5rem;
-    }
-
-    ul {
-      padding-left: 1.2rem;
-      margin-top: 0.5rem;
-    }
-
-    ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-
-    a:hover {
-      color: var(--accent-hover);
-    }
-
-    .btn {
-      display: inline-block;
-      margin-top: 1rem;
-      padding: 0.6rem 1.2rem;
-      border: none;
-      border-radius: 8px;
-      background: var(--accent);
-      color: #000;
-      font-weight: bold;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .btn:hover {
-      background: var(--accent-hover);
-      transform: scale(1.05);
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem;
-      background-color: var(--bg-card);
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      border-top: 1px solid #30363d;
-    }
-
-    @media (max-width: 600px) {
-      header h1 {
-        font-size: 2rem;
-      }
-      main {
-        padding: 0 1rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime Hub</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(to right, #ff6b6b, #4ecdc4);
+            color: white;
+            text-align: center;
+            padding: 2em;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .character-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .character-card {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .character-card:hover {
+            transform: scale(1.05);
+        }
+        .character-card h3 {
+            margin: 0 0 10px;
+            color: #ff6b6b;
+            font-size: 1.5em;
+        }
+        .character-card p {
+            font-size: 0.9em;
+            margin: 0;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            background: #333;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
 </head>
 <body>
-
-  <header>
-    <h1>Welcome to My Animated Page</h1>
-  </header>
-
-  <main>
-    <section>
-      <h2>About</h2>
-      <p>This HTML page features smooth , modern layout, and interactive styles—all without using any images or JavaScript.</p>
-      <button class="btn">Get Started</button>
-    </section>
-
-    <section>
-      <h2>Features</h2>
-      <ul>
-        <li>Animated gradient heading</li>
-        <li>Fade-up sections on load</li>
-        <li>Hover effects on buttons and links</li>
-        <li>Pure HTML + CSS only</li>
-      </ul>
-    </section>
-
-    <section>
-      <h2>Explore More</h2>
-      <p>Learn more at <a href="https://example.com" target="_blank">example.com</a>.</p>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 Your Name.
-  </footer>
-
+    <header>
+        <h1>Anime Hub</h1>
+        <p>Your source for all things anime!</p>
+    </header>
+    <div class="container">
+        <h2>Featured Characters</h2>
+        <div class="character-grid">
+            <div class="character-card">
+                <h3>Naruto Uzumaki</h3>
+                <p>The spirited ninja from Konoha, dreaming to become Hokage. Known for his determination and the Nine-Tails chakra.</p>
+            </div>
+            <div class="character-card">
+                <h3>Sailor Moon</h3>
+                <p>Guardian of love and justice, fighting evil by moonlight. Leads the Sailor Scouts with her cosmic powers.</p>
+            </div>
+            <div class="character-card">
+                <h3>Goku</h3>
+                <p>The Saiyan warrior with an unyielding spirit for battle. Protector of Earth with incredible strength.</p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2025 Anime Hub. All rights reserved.</p>
+    </footer>
 </body>
 </html>
