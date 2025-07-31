@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Modern HTML Page</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Animated HTML Page</title>
   <style>
     :root {
       --bg-dark: #0d1117;
@@ -26,6 +26,7 @@
       color: var(--text-light);
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       line-height: 1.8;
+      overflow-x: hidden;
     }
 
     header {
@@ -37,9 +38,18 @@
 
     header h1 {
       font-size: 2.5rem;
-      color: var(--accent);
-      letter-spacing: 1px;
-      animation: fadeIn 1s ease-in-out;
+      background: linear-gradient(90deg, #58a6ff, #1f6feb, #58a6ff);
+      background-size: 300% auto;
+      color: transparent;
+      background-clip: text;
+      -webkit-background-clip: text;
+      animation: gradientMove 4s ease-in-out infinite;
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% }
+      50% { background-position: 100% }
+      100% { background-position: 0% }
     }
 
     main {
@@ -55,11 +65,19 @@
       padding: 1.5rem 2rem;
       border-radius: var(--border-radius);
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp 0.8s forwards;
     }
 
-    section:hover {
-      transform: translateY(-4px);
+    section:nth-child(2) { animation-delay: 0.3s; }
+    section:nth-child(3) { animation-delay: 0.6s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     h2 {
@@ -87,6 +105,24 @@
       color: var(--accent-hover);
     }
 
+    .btn {
+      display: inline-block;
+      margin-top: 1rem;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background: var(--accent);
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .btn:hover {
+      background: var(--accent-hover);
+      transform: scale(1.05);
+    }
+
     footer {
       text-align: center;
       padding: 1.5rem;
@@ -94,17 +130,6 @@
       font-size: 0.9rem;
       color: var(--text-muted);
       border-top: 1px solid #30363d;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(-10px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
 
     @media (max-width: 600px) {
@@ -120,34 +145,34 @@
 <body>
 
   <header>
-    <h1>Welcome to My Modern Page</h1>
+    <h1>Welcome to My Animated Page</h1>
   </header>
 
   <main>
     <section>
       <h2>About</h2>
-      <p>This minimalist web page is built using only HTML and CSS. No images, no external libraries—just clean, efficient code for modern browsers.</p>
+      <p>This HTML page features smooth animations, modern layout, and interactive styles—all without using any images or JavaScript.</p>
+      <button class="btn">Get Started</button>
     </section>
 
     <section>
       <h2>Features</h2>
       <ul>
-        <li>Responsive design for all devices</li>
-        <li>Dark theme for comfort and aesthetics</li>
-        <li>Hover animations for interactivity</li>
-        <li>Card-based layout for readability</li>
-        <li>No dependencies or images</li>
+        <li>Animated gradient heading</li>
+        <li>Fade-up sections on load</li>
+        <li>Hover effects on buttons and links</li>
+        <li>Pure HTML + CSS only</li>
       </ul>
     </section>
 
     <section>
-      <h2>Learn More</h2>
-      <p>Want to explore more? Visit <a href="https://example.com" target="_blank">example.com</a> for tutorials and projects.</p>
+      <h2>Explore More</h2>
+      <p>Learn more at <a href="https://example.com" target="_blank">example.com</a>.</p>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Your Name. Crafted with pure HTML & CSS.
+    &copy; 2025 Your Name. Crafted with code and creativity.
   </footer>
 
 </body>
